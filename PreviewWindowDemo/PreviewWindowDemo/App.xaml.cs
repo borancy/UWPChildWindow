@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +23,9 @@ namespace PreviewWindowDemo
     /// </summary>
     sealed partial class App : Application
     {
+        internal new static App Current;
+        public CoreDispatcher _previewDispatcher;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -30,6 +34,7 @@ namespace PreviewWindowDemo
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            Current = this;
         }
 
         /// <summary>
